@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="SampleGPX" xmlns="http://www.topografix.com/GPX/1/1" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" 
+     xsi:schemaLocation="http://www.topografix.com/GPX/1/1 
+     http://www.topografix.com/GPX/1/1/gpx.xsd">
+  
+  <trk>
+    <name>Sample GPX Heart Rate Data</name>
+    <trkseg>
+      <trkpt lat="37.7749" lon="-122.4194">
+        <ele>10.0</ele>
+        <time>2024-02-18T12:00:00Z</time>
+        <extensions>
+          <gpxtpx:TrackPointExtension>
+            <gpxtpx:hr>120</gpxtpx:hr>
+          </gpxtpx:TrackPointExtension>
+        </extensions>
+      </trkpt>
+      
+      <trkpt lat="37.7750" lon="-122.4195">
+        <ele>12.0</ele>
+        <time>2024-02-18T12:01:00Z</time>
+        <extensions>
+          <gpxtpx:TrackPointExtension>
+            <gpxtpx:hr>125</gpxtpx:hr>
+          </gpxtpx:TrackPointExtension>
+        </extensions>
+      </trkpt>
+
+      <trkpt lat="37.7751" lon="-122.4196">
+        <ele>15.0</ele>
+        <time>2024-02-18T12:02:00Z</time>
+        <extensions>
+          <gpxtpx:TrackPointExtension>
+            <gpxtpx:hr>130</gpxtpx:hr>
+          </gpxtpx:TrackPointExtension>
+        </extensions>
+      </trkpt>
+
+      <trkpt lat="37.7752" lon="-122.4197">
+        <ele>18.0</ele>
+        <time>2024-02-18T12:03:00Z</time>
+        <extensions>
+          <gpxtpx:TrackPointExtension>
+            <gpxtpx:hr>135</gpxtpx:hr>
+          </gpxtpx:TrackPointExtension>
+        </extensions>
+      </trkpt>
+
+      <trkpt lat="37.7753" lon="-122.4198">
+        <ele>20.0</ele>
+        <time>2024-02-18T12:04:00Z</time>
+        <extensions>
+          <gpxtpx:TrackPointExtension>
+            <gpxtpx:hr>140</gpxtpx:hr>
+          </gpxtpx:TrackPointExtension>
+        </extensions>
+      </trkpt>
+
+    </trkseg>
+  </trk>
+</gpx>
