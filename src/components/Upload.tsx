@@ -11,7 +11,7 @@ interface HRData {
   fileName: string;
 }
 
-export default function UploadPage() {
+export default function Upload() {
   const [graphData, setGraphData] = useState<HRData[][]>([]);
 
   const handleFileUpload = async (files: FileList) => {
