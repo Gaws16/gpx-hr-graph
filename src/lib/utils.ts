@@ -34,3 +34,6 @@ export function haversine(
       Math.sin(dLon / 2) ** 2;
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
+export function filterExtensionFromName(name: string) {
+  return name.replace(/\.[^/.]+$/, "");
+}
