@@ -5,18 +5,27 @@ import FileUpload from "@/components/FileUpload";
 import Graph from "@/components/Graph";
 import { parseGPX } from "@/lib/gpxParser";
 
+interface HRData {
+  distance: number;
+  hr: number;
+  fileName: string;
+}
+
 export default function UploadPage() {
-  const [graphData, setGraphData] = useState<{ time: string; hr: number }[]>(
-    []
-  );
+  const [graphData, setGraphData] = useState<HRData[][]>([]);
 
   const handleFileUpload = async (files: FileList) => {
-    let allData: { time: string; hr: number }[] = [];
+    const allData: HRData[][] = [];
 
     for (const file of Array.from(files)) {
-      const { time, hr } = await parseGPX(file);
-      const formattedData = time.map((t, i) => ({ time: t, hr: hr[i] }));
-      allData = [...allData, ...formattedData];
+      const { distance, hr, fileName } = await parseGPX(file);
+      const formattedData = distance.map((d, i) => ({
+        distance: parseFloat(d.toFixed(2)), // Round to 2 decimal places
+        hr: hr[i],
+        fileName: fileName,
+      }));
+
+      allData.push(formattedData);
     }
 
     setGraphData(allData);

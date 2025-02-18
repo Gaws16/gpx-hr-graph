@@ -10,7 +10,7 @@ const FileUpload = ({
 }) => {
   const [files, setFiles] = useState<FileList | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
+  console.log(files);
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       setFiles(event.target.files);
