@@ -51,7 +51,7 @@ const Graph = ({ data }: { data: HRData[][] }) => {
           label={{
             value: "Distance (km)",
             position: "insideBottom",
-            offset: -10,
+            offset: -5,
           }}
         />
         <YAxis
@@ -61,8 +61,15 @@ const Graph = ({ data }: { data: HRData[][] }) => {
             position: "insideLeft",
           }}
         />
-        <Tooltip content={<CustomTooltip />} />
-        <Legend offset={11} />
+        <Tooltip
+          content={<CustomTooltip />}
+          wrapperStyle={{ transition: "opacity 0.1s ease-in-out" }}
+        />
+        <Legend
+          verticalAlign="top"
+          align="right"
+          wrapperStyle={{ marginBottom: 10 }}
+        />
         {data.map((fileData, index) => (
           <Line
             key={fileData[0]?.fileName || `File ${index + 1}`}
