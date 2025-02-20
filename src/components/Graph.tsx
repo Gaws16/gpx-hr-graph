@@ -20,7 +20,8 @@ const Graph = ({ data }: { data: HRData[][] }) => {
   // Merge data from all files into a single array
   const mergedData = useMemo(() => {
     const allDistances = new Set<number>();
-    const downsmapledData = downsampleData(data, 10);
+    // Downsample data to reduce the number of points, for performance reasons
+    const downsmapledData = downsampleData(data, 20);
     downsmapledData.forEach((fileData) =>
       fileData.forEach((point) => allDistances.add(point.distance))
     );
