@@ -1,14 +1,19 @@
 import { filterExtensionFromName } from "@/lib/utils";
+import { CustomTooltipProps, GroupedPayload } from "@/types/GraphTypes";
 import { useMemo } from "react";
 
-export default function CustomTooltip({ active, payload, label }: any) {
+export default function CustomTooltip({
+  active,
+  payload,
+  label,
+}: CustomTooltipProps) {
   // Group payload by dataKey/fileName
   const groupedPayload = useMemo(() => {
     if (!active || !payload || payload.length === 0) return null;
 
-    const data: { [key: string]: { hr: number; distance: number } } = {};
+    const data: GroupedPayload = {};
 
-    payload.forEach((entry: any) => {
+    payload.forEach((entry) => {
       const fileName = filterExtensionFromName(entry.dataKey);
       data[fileName] = {
         hr: entry.value,
@@ -39,5 +44,3 @@ export default function CustomTooltip({ active, payload, label }: any) {
     </div>
   );
 }
-
-return null;
