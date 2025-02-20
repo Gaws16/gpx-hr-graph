@@ -1,3 +1,4 @@
+import { HRData } from "@/types/GraphTypes";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -37,3 +38,14 @@ export function haversine(
 export function filterExtensionFromName(name: string) {
   return name.replace(/\.[^/.]+$/, "");
 }
+/**
+ *
+ * @param data
+ * @param step
+ * @returns
+ */
+export const downsampleData = (data: HRData[][], step: number) => {
+  return data.map((fileData) =>
+    fileData.filter((_, index) => index % step === 0)
+  );
+};

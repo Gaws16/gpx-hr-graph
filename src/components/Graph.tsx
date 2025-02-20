@@ -11,19 +11,17 @@ import {
 } from "recharts";
 import { useMemo } from "react";
 import CustomTooltip from "./CustomTooltip";
-
-interface HRData {
-  distance: number;
-  hr: number;
-  fileName: string;
-}
+import { HRData } from "@/types/GraphTypes";
+import { downsampleData } from "@/lib/utils";
 
 const colors = ["#8884d8", "#82ca9d", "#ff7300", "#ff6384", "#36a2eb"];
 
 const Graph = ({ data }: { data: HRData[][] }) => {
+  // Merge data from all files into a single array
   const mergedData = useMemo(() => {
     const allDistances = new Set<number>();
-    data.forEach((fileData) =>
+    const downsmapledData = downsampleData(data, 10);
+    downsmapledData.forEach((fileData) =>
       fileData.forEach((point) => allDistances.add(point.distance))
     );
 
@@ -61,10 +59,12 @@ const Graph = ({ data }: { data: HRData[][] }) => {
             position: "insideLeft",
           }}
         />
+
         <Tooltip
           content={<CustomTooltip />}
           wrapperStyle={{ transition: "opacity 0.1s ease-in-out" }}
         />
+
         <Legend
           verticalAlign="top"
           align="right"
