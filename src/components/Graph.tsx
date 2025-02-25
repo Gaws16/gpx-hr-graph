@@ -21,7 +21,7 @@ const Graph = ({ data }: { data: HRData[][] }) => {
   const mergedData = useMemo(() => {
     const allDistances = new Set<number>();
     // Downsample data to reduce the number of points, for performance reasons
-    const downsmapledData = downsampleData(data, 20);
+    const downsmapledData = downsampleData(data, 10);
     downsmapledData.forEach((fileData) =>
       fileData.forEach((point) => allDistances.add(point.distance))
     );
@@ -36,6 +36,7 @@ const Graph = ({ data }: { data: HRData[][] }) => {
         const point = fileData.find((p) => p.distance === distance);
         if (point) {
           entry[point.fileName] = point.hr;
+          entry["time"] = point.time || "no time data";
         }
       });
       return entry;
@@ -46,9 +47,9 @@ const Graph = ({ data }: { data: HRData[][] }) => {
     <ResponsiveContainer width="100%" height={400}>
       <LineChart data={mergedData}>
         <XAxis
-          dataKey="distance"
+          dataKey="time"
           label={{
-            value: "Distance (km)",
+            value: "Time (hh:mm:ss)",
             position: "insideBottom",
             offset: -5,
           }}

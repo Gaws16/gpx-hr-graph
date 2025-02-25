@@ -2,6 +2,7 @@ export interface HRData {
   distance: number;
   hr: number;
   fileName: string;
+  time?: string;
 }
 export interface PayloadItem {
   dataKey: string;

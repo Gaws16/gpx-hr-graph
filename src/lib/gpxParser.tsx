@@ -1,4 +1,4 @@
-import { haversine } from "./utils";
+import { formatElapsedTime, haversine } from "./utils";
 
 export async function parseGPX(file: File) {
   const text = await file.text();
@@ -10,12 +10,17 @@ export async function parseGPX(file: File) {
   let totalDistance = 0;
   let prevLat: number | null = null;
   let prevLon: number | null = null;
-
+  const startTime = new Date(
+    trkpts[0]?.getElementsByTagName("time")[0]?.textContent || ""
+  ).getTime();
   const data = trkpts.map((pt) => {
     const lat = parseFloat(pt.getAttribute("lat") || "0");
     const lon = parseFloat(pt.getAttribute("lon") || "0");
     const hr = pt.getElementsByTagName("gpxtpx:hr")[0]?.textContent || "0";
     const time = pt.getElementsByTagName("time")[0]?.textContent || "";
+
+    const timestamp = new Date(time).getTime();
+    const elapsedTime = timestamp - startTime;
 
     // Compute distance from previous point
     if (prevLat !== null && prevLon !== null) {
@@ -29,7 +34,7 @@ export async function parseGPX(file: File) {
       distance: totalDistance,
       hr: parseInt(hr),
       fileName: file.name,
-      time,
+      time: formatElapsedTime(elapsedTime),
     };
   });
 
